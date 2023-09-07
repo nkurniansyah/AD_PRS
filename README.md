@@ -68,22 +68,23 @@ dataset. See manuscript for more detail.
 The table below provides, for each trait-specific GWAS used, the
 following information:
 
-GWAS\_name: GWAS name (which cohort/study the GWAS summary statistics
-are from?)  
-Threshold: p-value threshold for selecting SNPs into the PRS  
-Distance: distance in kilo base-pairs used for clumping (SNPs were
-removed from consideration based on LD with other SNPs within a window
-of this distance)  
-R2: maximum LD for inclusion of SNPs within the distance-based window of
-another SNP that was already selected into the PRS.  
-SOL\_mean: the mean of the PRS after it was constructed in the SOL
-population. That is, each of the SOL participants had a PRS value. This
-is the mean of these values.  
-SOL\_sd: the standard deviation (SD) of the PRS after it was constructed
-in the SOL population. That is, each of the SOL participants had a PRS
-value. This is the SD of these values.  
+1.  GWAS\_name: GWAS name (which cohort/study the GWAS summary
+    statistics are from)  
+2.  Threshold: p-value threshold for selecting SNPs into the PRS  
+3.  Distance: distance in kilo base-pairs used for clumping (SNPs were
+    removed from consideration based on LD with other SNPs within a
+    window of this distance)  
+4.  R2: maximum LD for inclusion of SNPs within the distance-based
+    window of another SNP that was already selected into the PRS.  
+5.  SOL\_mean: the mean of the PRS after it was constructed in the SOL
+    population. That is, each of the SOL participants had a PRS value.
+    This is the mean of these values.  
+6.  SOL\_sd: the standard deviation (SD) of the PRS after it was
+    constructed in the SOL population. That is, each of the SOL
+    participants had a PRS value. This is the SD of these values.  
+7.  No\_SNP: Number of SNP selected from Clumping and Thresholding  
 
-No\_SNP: Number of SNP selected from Clumping and Thresholding
+<!-- -->
 
     ##             GWAS_name Threshold Distance  R2     SOL_mean      SOL_sd No_SNP
     ## 1   Bellenguez et al.     1e-03   1000kb 0.1  0.000415514 0.000337105   1937
