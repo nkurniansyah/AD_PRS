@@ -27,3 +27,98 @@ We used the following packages from CRAN: dplyr, tidyverse, data.table, purrr, p
 
 install.packages("dplyr")
 
+## Un-weighted PRSsum construction
+
+To create an unweighted PRSsum, please follow the instructions in our repository: https://github.com/nkurniansyah/Hypertension_PRS. 
+The details on how to create the selected PRS can be found in the paper.
+We offer an alternative approach for simplification by providing a function to combine variant weights into a single overall variant weight. Below are the instructions:
+
+1. Clone [PRSsum_Simple](https://github.com/nkurniansyah/PRSsum_Simple "PRSsum_Simple")
+2. in terminal : git clone https://github.com/nkurniansyah/PRSsum_Simple 
+3. then you need to source the function in ../PRSsum_Simple/Code/*
+
+
+```{r}
+source("../PRSsum_Simple/Code/create_PRSsum.R")
+source("../PRSsum_Simple/Code/match_allele.R")
+```
+
+### Step 1: Prepare the input files.
+
+To prevent errors, please ensure that you follow the instructions provided in PRSsum_Simple. We do not include rsIDs in the variant weight files since some of them lack rsIDs.
+
+```{r,warning=FALSE,message=FALSE}
+library(data.table)
+library(dplyr)
+library(tidyverse)
+
+```
+
+
+```{r}
+studies<-c("FINNGEN","Jun","Bellenguez","Kunkle","Kunkle_AFR")
+study_list<-list()
+for(study in studies){
+  variant_weight_file<- paste0("Variant_weight/",study,".csv")
+  
+  variant_weight<-fread(variant_weight_file, data.table = F)
+  colnames(variant_weight)<-c("Chromosome","Position", "Allele1","Allele2", "BETA")
+
+  study_list[[study]]<- variant_weight
+}
+
+#example of variants weight
+head(study_list[["Jun"]])
+```
+
+Next, we will align all the alleles with the reference SNP. In this project, we have utilized Bellenguez variant weights as references. To expedite computations for this project, we have pre-processed the reference SNP data, including only the SNPs used to create the PRS.
+
+
+
+```{r}
+Bellenguez_ref_snp<- fread("Variant_weight/Bellenguez_ref_snp.csv", data.table = F)
+ad_variants_weight_clean<- match_allele(refrence_snp=Bellenguez_ref_snp, 
+                                     list_variants_weight=study_list,
+                                     match_by_position=TRUE)
+head(ad_variants_weight_clean)
+
+```
+
+
+
+
+
+
+### Step 2: Create summation variant weight
+
+
+we use the TOPMed mean and SD values of each variants weight.  Using the same scaling throughout guarantees that effect size estimates are similarly interpreted across all datasets and individuals who use this PRS.
+
+```{r}
+PRSsum_Scaling<- fread("Variant_weight/PRSsum_Scaling.csv")
+PRSsum_Scaling
+```
+
+After prepare for all the input, now we can generate create summation variant weight. follow this command below:
+
+```{r}
+ad_unweigted_variants_weight<- create_prsum(variant_weights=ad_variants_weight_clean, 
+                                       PRSsum_scaling=PRSsum_Scaling, 
+                                       weight_file=NULL,
+                                       chr_col_name="Chromosome", 
+                                       pos_col_name="Position", 
+                                       effect_allele_col_name="Allele1",
+                                       other_allele_col_name="Allele2",
+                                       rsID_col_name=NULL)
+
+head(ad_unweigted_variants_weight)
+
+write.table(ad_unweigted_variants_weight, file = "Variant_weight/Unweighted_PRSsum.txt", row.names = F, quote = F, sep="\t")
+```
+
+
+
+### Step 3: Construct PRS and perform the asscoiation test
+
+In this paper, we utilized PRSice2 to create the PRS and employed HCHS/SOL as the reference panel (for further details, please refer to the paper). To construct the PRS and conduct the association test, please follow the instructions provided in our repository at https://github.com/nkurniansyah/Hypertension_PRS.
+
