@@ -93,6 +93,39 @@ following information:
     ## 4  Kunkle et al. 2019     1e-02   1000kb 0.3 -0.005668489 0.000503101  12002
     ## 5 Kunkle  et al. 2021     1e-04    250kb 0.3 -0.037393299 0.006307699    157
 
+## PRS construction
+
+This command is to construct PRS using the summary statistics that we
+provide. No clumping is needed and no selection of SNPs. The summary
+statistics are already based on the specific set of SNPs selected after
+clumping and setting a p-value threshold. Note that genetic data files
+need to be specified in the –target argument.
+
+
+    Rscript ./PRSice.R \
+     --dir ./PRS_Output \
+     --prsice ./PRSice_linux/PRSice_linux \
+     --base ./Summary_Statistics_for_PRS_construction/. \
+     --target ./Genotype \
+     --thread 2 \
+     --chr Chromosome 
+     --bp Position 
+     --A1 Allele1 
+     --A2 Allele2 
+     --pvalue PValue \
+     --bar-levels Threshold \
+     --stat BETA 
+     --all-score T \
+     --out ./out_prs \
+     --no-clump T
+     --print-snp T \
+     --ignore-fid T 
+     --no-regress T 
+     --fastscore T 
+     --model add 
+     --no-full T 
+     --chr-id c:l:a:b
+
 To create an unweighted PRSsum, please follow the instructions in our
 repository: <https://github.com/nkurniansyah/Hypertension_PRS>. The
 details on how to create the selected PRS can be found in the paper. We
