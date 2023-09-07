@@ -39,8 +39,9 @@ To create an unweighted PRSsum, please follow the instructions in our
 repository: <https://github.com/nkurniansyah/Hypertension_PRS>. The
 details on how to create the selected PRS can be found in the paper. We
 offer an alternative approach for simplification by providing a function
-to combine variant weights into a single overall variant weight. Below
-are the instructions:
+to combine variant weights into a single overall variant weight. This
+approach have slightly different when we compute PRSsum like in we
+explain in the paper. Below are the instructions:
 
 1.  Clone
     [PRSsum\_Simple](https://github.com/nkurniansyah/PRSsum_Simple "PRSsum_Simple")
