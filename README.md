@@ -49,12 +49,12 @@ Specific GWAS used:
     ## 3 Kunkle et al. 2019 European ancestry PMID: 30820047
     ## 4  Bellenguez et al. European ancestry PMID: 35379992
     ## 5 Kunkle et al. 2021  African ancestry PMID: 33074286
-    ##                                                                            Site to download
-    ## 1 https://www.FINNGEN.fi/en/access_results We used R8 GWAS version published on Dec, 1 2022
-    ## 2                                                  https://www.niagads.org/datasets/ng00056
-    ## 3                                                  https://www.niagads.org/datasets/ng00075
-    ## 4                                           https://www.ebi.ac.uk/gwas/studies/GCST90027158
-    ## 5                                                  https://www.niagads.org/datasets/ng00100
+    ##                                                   Site to download
+    ## 1 https://www.FINNGEN.fi/en/access_results R8 accessed in Dec 2022
+    ## 2                         https://www.niagads.org/datasets/ng00056
+    ## 3                         https://www.niagads.org/datasets/ng00075
+    ## 4                  https://www.ebi.ac.uk/gwas/studies/GCST90027158
+    ## 5                         https://www.niagads.org/datasets/ng00100
 
 To create an unweighted PRSsum, please follow the instructions in our
 repository: <https://github.com/nkurniansyah/Hypertension_PRS>. The
