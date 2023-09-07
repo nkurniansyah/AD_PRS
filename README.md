@@ -52,4 +52,4 @@ the instructions:
     source("../PRSsum_Simple/Code/create_PRSsum.R")
     source("../PRSsum_Simple/Code/match_allele.R")
 
-# Step 1: Prepare the input files.
+### Step 1: Prepare the input files.
