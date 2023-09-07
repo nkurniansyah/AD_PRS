@@ -32,3 +32,24 @@ We used the following packages from CRAN: dplyr, tidyverse, data.table,
 purrr, pROC.
 
 install.packages(“dplyr”)
+
+## Un-weighted PRSsum construction
+
+To create an unweighted PRSsum, please follow the instructions in our
+repository: <https://github.com/nkurniansyah/Hypertension_PRS>. We offer
+an alternative approach for simplification by providing a function to
+combine variant weights into a single overall variant weight. Below are
+the instructions:
+
+1.  Clone
+    [PRSsum\_Simple](https://github.com/nkurniansyah/PRSsum_Simple "PRSsum_Simple")
+2.  in terminal : git clone
+    <https://github.com/nkurniansyah/PRSsum_Simple>
+3.  then you need to source the function in ../PRSsum\_Simple/Code/\*
+
+<!-- -->
+
+    source("../PRSsum_Simple/Code/create_PRSsum.R")
+    source("../PRSsum_Simple/Code/match_allele.R")
+
+# Step 1: Prepare the input files.
