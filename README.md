@@ -56,6 +56,42 @@ Specific GWAS used:
     ## 4                  https://www.ebi.ac.uk/gwas/studies/GCST90027158
     ## 5                         https://www.niagads.org/datasets/ng00100
 
+The variants weight provided were selected from those in the complete
+GWAS based on clumping parameter below, where we used the HCHS/SOL
+TOPMed imputed Freeze5 dataset used in the paper as an LD reference
+panel. To select the specific tuning parameter (LD parameters, p-value
+threshold) for each AD PRS, we applied an approach where we optimized
+the coefficient of variation (CV) computed over the estimated effect
+sizes of the candidate PRS across 4 independent subset of the training
+dataset. See manuscript for more detail.
+
+The table below provides, for each trait-specific GWAS used, the
+following information:
+
+GWAS\_name: GWAS name (which cohort/study the GWAS summary statistics
+are from?)  
+Threshold: p-value threshold for selecting SNPs into the PRS  
+Distance: distance in kilo base-pairs used for clumping (SNPs were
+removed from consideration based on LD with other SNPs within a window
+of this distance)  
+R2: maximum LD for inclusion of SNPs within the distance-based window of
+another SNP that was already selected into the PRS.  
+SOL\_mean: the mean of the PRS after it was constructed in the SOL
+population. That is, each of the SOL participants had a PRS value. This
+is the mean of these values.  
+SOL\_sd: the standard deviation (SD) of the PRS after it was constructed
+in the SOL population. That is, each of the SOL participants had a PRS
+value. This is the SD of these values.  
+
+No\_SNP: Number of SNP selected from Clumping and Thresholding
+
+    ##             GWAS_name Threshold Distance  R2     SOL_mean      SOL_sd No_SNP
+    ## 1   Bellenguez et al.     1e-03   1000kb 0.1  0.000415514 0.000337105   1937
+    ## 2             FinnGen     1e-06    250kb 0.1  0.002860917 0.007873218     81
+    ## 3          Jun et al.     1e-05    250kb 0.2  0.014803928 0.007789044     85
+    ## 4  Kunkle et al. 2019     1e-02   1000kb 0.3 -0.005668489 0.000503101  12002
+    ## 5 Kunkle  et al. 2021     1e-04    250kb 0.3 -0.037393299 0.006307699    157
+
 To create an unweighted PRSsum, please follow the instructions in our
 repository: <https://github.com/nkurniansyah/Hypertension_PRS>. The
 details on how to create the selected PRS can be found in the paper. We
