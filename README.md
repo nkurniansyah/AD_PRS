@@ -35,6 +35,27 @@ install.packages(“dplyr”)
 
 ## Un-weighted PRSsum construction
 
+Our AD-PRS is a sum of multiple AD PRS (FINNGEN, Jun et al., Kunkle et
+al 2019.,Bellenguez et al., and kunkle et al. 2021). Summary statistics
+to create the each of the AD-PRS are provided here in
+subfolder(./Variant\_weight/\*). The variant positions are in Hg38 and
+Alelle1 is the effect alelle.
+
+Specific GWAS used:
+
+    ##             GAS name    Race/ethnicity     References
+    ## 1            FinnGen  Finnish European              -
+    ## 2         Jun et al.      Multi-ethnic PMID: 28183528
+    ## 3 Kunkle et al. 2019 European ancestry PMID: 30820047
+    ## 4  Bellenguez et al. European ancestry PMID: 35379992
+    ## 5 Kunkle et al. 2021  African ancestry PMID: 33074286
+    ##                                                                            Site to download
+    ## 1 https://www.FINNGEN.fi/en/access_results We used R8 GWAS version published on Dec, 1 2022
+    ## 2                                                  https://www.niagads.org/datasets/ng00056
+    ## 3                                                  https://www.niagads.org/datasets/ng00075
+    ## 4                                           https://www.ebi.ac.uk/gwas/studies/GCST90027158
+    ## 5                                                  https://www.niagads.org/datasets/ng00100
+
 To create an unweighted PRSsum, please follow the instructions in our
 repository: <https://github.com/nkurniansyah/Hypertension_PRS>. The
 details on how to create the selected PRS can be found in the paper. We
@@ -174,7 +195,7 @@ variant weight. follow this command below:
     ## 5       19     43620216             T            G    0.18044608
     ## 6       19     43638619             A            G    0.10016454
 
-    write.table(ad_unweigted_variants_weight, file = "Variant_weight/Unweighted_PRSsum.txt", row.names = F, quote = F, sep="\t")
+    #write.table(ad_unweigted_variants_weight, file = "Variant_weight/Unweighted_PRSsum.txt", row.names = F, quote = F, #sep="\t")
 
 ### Step 3: Construct PRS and perform the asscoiation test
 
