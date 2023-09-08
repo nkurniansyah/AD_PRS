@@ -33,7 +33,7 @@ purrr, pROC.
 
 install.packages(“dplyr”)
 
-## Un-weighted PRSsum construction
+## PRS construction
 
 Our AD-PRS is a sum of multiple AD PRS (FINNGEN, Jun et al., Kunkle et
 al 2019.,Bellenguez et al., and kunkle et al. 2021). Summary statistics
@@ -93,7 +93,7 @@ following information:
     ## 4  Kunkle et al. 2019     1e-02   1000kb 0.3 -0.005668489 0.000503101  12002
     ## 5 Kunkle  et al. 2021     1e-04    250kb 0.3 -0.037393299 0.006307699    157
 
-## PRS construction
+## PRSice command for PRS construction
 
 This command is to construct PRS using the summary statistics that we
 provide. No clumping is needed and no selection of SNPs. The summary
@@ -105,7 +105,7 @@ need to be specified in the –target argument.
     Rscript ./PRSice.R \
      --dir ./PRS_Output \
      --prsice ./PRSice_linux/PRSice_linux \
-     --base ./Summary_Statistics_for_PRS_construction/. \
+     --base ./Variant_weight/. \
      --target ./Genotype \
      --thread 2 \
      --chr Chromosome 
@@ -125,6 +125,52 @@ need to be specified in the –target argument.
      --model add 
      --no-full T 
      --chr-id c:l:a:b
+
+## Constructing PRSsum based on multiple AD-PRS
+
+After constructing multiple AD PRS, the AD-PRS is derived using the
+PRSsum approach. This involves taking an unweighted sum of the scaled
+trait-specific PRS. We utilize the mean and standard deviation (SD)
+values from the SOL for each AD-specific PRS for scaling. Additionally,
+we include the SOL mean and SD of the AD-PRS for the final scaling step.
+Using the same scaling throughout guarantees that effect size estimates
+are similarly interpreted across all datasets and individuals who use
+this PRS.
+
+    SOL_AD_PRS_mean_sd<-read.csv("../AD_PRS/Final_scaling_AD_PRS_SOL.csv")
+    SOL_AD_PRS_mean_sd
+
+    ##        SOL_mean   SOL_sd
+    ## 1 -7.879378e-16 2.993377
+
+    studies <- c("FINNGEN", "Jun","Kunkle","Kunkle_AFR","Bellenguez")
+    out<-list()
+    for(study in studies){
+      
+      
+      prs_output <-paste0("./", study,".all_score")
+      prs_df <-fread(prs_output, data.table=F)
+      prs_df <- prs_df %>% dplyr::select(-IID)
+      colnames(prs_df)<- c("sample.id", study)
+      
+      #standardize trait-prs using the mean and sd from TOPMed 
+      cur_SOL_mean <- scaling_info$SOL_mean[which(scaling_info$GWAS_name == study)]
+      cur_SOL_sd <- scaling_info$SOL_sd[which(scaling_info$GWAS_name == study)]
+      
+      prs_df[, study]<- (prs_df[, study] - cur_SOL_mean)/cur_SOL_sd
+      out[[study]]<- prs_df
+      
+      
+    }
+
+    combine_prs <- purrr::reduce(out, full_join , by="sample.id")
+
+
+
+    prssum<- data.frame(sample.id=prssum$sample.id, 
+                        PRSsum=apply(prssum[,], 1, sum))
+
+    prssum[,"PRSsum"]<- (prssum[,"PRSsum"] - SOL_AD_PRS_mean_sd$SOL_mean))/SOL_AD_PRS_mean_sd$SOL_sd
 
 To create an unweighted PRSsum, please follow the instructions in our
 repository: <https://github.com/nkurniansyah/Hypertension_PRS>. The
