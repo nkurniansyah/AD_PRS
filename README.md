@@ -140,6 +140,8 @@ this PRS.
     ##        SOL_mean   SOL_sd
     ## 1 -7.879378e-16 2.993377
 
+See code below to construct PRSsum
+
     studies <- c("FINNGEN", "Jun","Kunkle","Kunkle_AFR","Bellenguez")
     out<-list()
     for(study in studies){
