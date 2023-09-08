@@ -171,13 +171,12 @@ See code below to construct PRSsum
 
     prssum[,"PRSsum"]<- (prssum[,"PRSsum"] - SOL_AD_PRS_mean_sd$SOL_mean))/SOL_AD_PRS_mean_sd$SOL_sd
 
-To create an unweighted PRSsum, please follow the instructions in our
-repository: <https://github.com/nkurniansyah/Hypertension_PRS>. The
-details on how to create the selected PRS can be found in the paper. We
-offer an alternative approach for simplification by providing a function
-to combine variant weights into a single overall variant weight. This
-approach have slightly different when we compute PRSsum like in we
-explain in the paper. Below are the instructions:
+## Alternative to construct PRSsum
+
+We offer an alternative approach for simplification by providing a
+function to combine variant weights into a single overall variant
+weight. This approach have slightly different when we compute PRSsum
+like in we explain in the paper. Below are the instructions:
 
 1.  Clone
     [PRSsum\_Simple](https://github.com/nkurniansyah/PRSsum_Simple "PRSsum_Simple")
@@ -312,10 +311,4 @@ variant weight. follow this command below:
 
     #write.table(ad_unweigted_variants_weight, file = "Variant_weight/Unweighted_PRSsum.txt", row.names = F, quote = F, #sep="\t")
 
-### Step 3: Construct PRS and perform the asscoiation test
-
-In this paper, we utilized PRSice2 to create the PRS and employed
-HCHS/SOL as the reference panel (for further details, please refer to
-the paper). To construct the PRS and conduct the association test,
-please follow the instructions provided in our repository at
-<https://github.com/nkurniansyah/Hypertension_PRS>.
+### Step 3: Construct PRS
