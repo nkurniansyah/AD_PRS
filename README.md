@@ -312,3 +312,6 @@ variant weight. follow this command below:
     #write.table(ad_unweigted_variants_weight, file = "Variant_weight/Unweighted_PRSsum.txt", row.names = F, quote = F, #sep="\t")
 
 ### Step 3: Construct PRS
+
+If you used our final scaling, please in PRSice2 command added *–score
+sum*. See command below:
