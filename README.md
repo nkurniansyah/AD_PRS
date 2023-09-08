@@ -348,3 +348,46 @@ next, we can scale the PRSsum using SOL final scaling.
     colnames(prssum)<- c("sample.id", "PRSsum")
 
     prssum[, "PRSsum"]<- (prssum[, "PRSsum"]-SOL_AD_PRS_mean_sd$SOL_mean)/SOL_AD_PRS_mean_sd$SOL_sd
+
+## Example code for association analysis
+
+“We conducted an association analysis using mixed models, which were
+implemented using the GENESIS R package, for all individuals.
+Additionally, we offer an alternative method for conducting association
+tests using linear regression specifically designed for unrelated
+individuals. Below, you will find an example code for this alternative
+approach, which utilizes functions provided in the ‘Code’ folder
+
+    library(GENESIS)
+    library(GWASTools)
+    library(pROC)
+
+
+    source("./Code/*")
+
+    # add name of file of IDs of unrelated individuals as needed
+
+    pheno<- fread(phenotype_file, data.table=F)
+
+
+    # merge PRSsum with phenotype
+
+    pheno_df<-left_join(pheno,prssum, by="person_id")
+
+
+    covarites_prs<- c("age","sex","site","ethnic_background","education","apoe4","apoe2",paste0("PC_",1:5),"PRSsum")
+
+    outcome<-"MCI"
+
+    ## Kinship matrix
+
+    covMatlist<-getobj(covMatlist)
+
+
+    assoc_df<- run_assoc_mixmodel(pheno=pheno,
+                                  outcome=outcome,
+                                  covars_prs=covarites_prs, 
+                                  covmat=covMatlist,
+                                  group.var=NULL)
+
+    assoc_df
