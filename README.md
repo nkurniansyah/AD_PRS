@@ -137,9 +137,6 @@ Using the same scaling throughout guarantees that effect size estimates
 are similarly interpreted across all datasets and individuals who use
 this PRS.
 
-    SOL_AD_PRS_mean_sd<-read.csv("../AD_PRS/Final_scaling_AD_PRS_SOL.csv")
-    SOL_AD_PRS_mean_sd
-
     ##        SOL_mean   SOL_sd
     ## 1 -7.879378e-16 2.993377
 
