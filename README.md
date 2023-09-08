@@ -341,7 +341,7 @@ sum*. See command below:
      --score sum \
      --chr-id c:l:a:b
 
-net, we can scale the PRSsum using SOL final scaling.
+next, we can scale the PRSsum using SOL final scaling.
 
     prssum<- fread("../PRS/Unweighted_PRSsum.all_score", data.table = F)
     prssum<- prssum %>% dplyr::select(-IID)
