@@ -315,3 +315,28 @@ variant weight. follow this command below:
 
 If you used our final scaling, please in PRSice2 command added *–score
 sum*. See command below:
+
+    Rscript ./PRSice.R \
+     --dir ./PRS_Output \
+     --prsice ./PRSice_linux/PRSice_linux \
+     --base ./Variant_weight/Unweighted_PRSsum.txt \
+     --target ./Genotype \
+     --thread 2 \
+     --chr Chromosome 
+     --bp Position 
+     --A1 Allele1 
+     --A2 Allele2 
+     --pvalue PValue \
+     --bar-levels Threshold \
+     --stat BETA 
+     --all-score T \
+     --out ./out_prs \
+     --no-clump T
+     --print-snp T \
+     --ignore-fid T \
+     --no-regress T \ 
+     --fastscore T \ 
+     --model add \
+     --no-full T \
+     --score sum \
+     --chr-id c:l:a:b
