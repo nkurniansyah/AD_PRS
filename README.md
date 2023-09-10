@@ -10,10 +10,11 @@ U.S.](https://alzres.biomedcentral.com/articles/10.1186/s13195-023-01298-3 "A po
 
 First, it provides instructions for constructing the AD-PRS based on
 summary statistics from GWAS. We provide the relevant summary statistics
-(see folder “Variant\_weight”). Additionally, we provide instructions on
-generating unweighted variant weights. This step simplifies the process
-of generating the PRS by combining multiple variant weights into a
-single overall variant weight.
+(see folder “Variant\_weight”) and also can download in PGS catalog
+(Link to be added). Additionally, we provide instructions on generating
+unweighted variant weights. This step simplifies the process of
+generating the PRS by combining multiple variant weights into a single
+overall variant weight.
 
 ## Required packages
 
