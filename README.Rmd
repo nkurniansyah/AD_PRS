@@ -236,7 +236,7 @@ head(ad_unweigted_variants_weight)
 
 ### Step 3: Construct PRS
 
-If you used our final scaling, please in PRSice2 command added *--score sum*. See command below:
+Below is PRSice2 command to construct PRSsum
 
 ```{bash eval=FALSE, include=TRUE}
 Rscript ./PRSice.R \
