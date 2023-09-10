@@ -341,7 +341,6 @@ Below is PRSice2 command to construct PRSsum
      --fastscore T \ 
      --model add \
      --no-full T \
-     --score sum \
      --chr-id c:l:a:b
 
 next, we can scale the PRSsum using SOL final scaling.
