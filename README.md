@@ -317,7 +317,8 @@ variant weight. follow this command below:
 
 ### Step 3: Construct PRS
 
-Below is PRSice2 command to construct PRSsum
+If you used our final scaling, please in PRSice2 command added *–score
+sum*. See command below:
 
     Rscript ./PRSice.R \
      --dir ./PRS_Output \
@@ -340,6 +341,7 @@ Below is PRSice2 command to construct PRSsum
      --no-regress T \ 
      --fastscore T \ 
      --model add \
+     --score sum \
      --no-full T \
      --chr-id c:l:a:b
 
