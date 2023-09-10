@@ -12,7 +12,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This repository provides information regarding the construction of a polygenic risk score (PRS) for Alzhaimer (AD) that we developed (AD-PRS) in manuscript [A polygenic risk score for Alzheimer’s disease constructed using APOE-region variants has stronger association than APOE alleles with mild cognitive impairment in Hispanic/Latino adults in the U.S.](https://alzres.biomedcentral.com/articles/10.1186/s13195-023-01298-3 "A polygenic risk score for Alzheimer’s disease constructed using APOE-region variants has stronger association than APOE alleles with mild cognitive impairment in Hispanic/Latino adults in the")
 
-First, it provides instructions for constructing the AD-PRS based on summary statistics from GWAS. We provide the relevant summary statistics (see folder “Variant_weight”) and also can download in PGS catalog (Link to be added). Additionally, we provide instructions on generating unweighted variant weights. This step simplifies the process of generating the PRS by combining multiple variant weights into a single overall variant weight.
+First, it provides instructions for constructing the AD-PRS from GWAS summary statistics, which are available in the "Variant_weight" folder and can also be downloaded from the PGS catalog (Link to be added). Additionally, we provide an instructions for creating an unweighted PRSsum (AD-PRS) and an alternative method that simplifies the process by combining multiple variant weights into a single overall weight before constructing the PRS.
+
+In this repository, we also include code and examples on how to perform association analysis, which can be found in the "./Code/*" directory.
 
 ## Required packages
 
