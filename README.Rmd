@@ -261,7 +261,6 @@ Rscript ./PRSice.R \
  --fastscore T \ 
  --model add \
  --no-full T \
- --score sum \
  --chr-id c:l:a:b
 
 ```
