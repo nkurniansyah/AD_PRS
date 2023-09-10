@@ -235,25 +235,25 @@ reference SNP data, including only the SNPs used to create the PRS.
                                          list_variants_weight=study_list,
                                          match_by_position=TRUE)
 
-    ## variant weight will match using chromosome and position
+    ## variant weight will be matched using chromosome and position
 
     ## 23 alleles from FINNGEN are being flipped to align them with the reference SNP
 
-    ## variant weight will match using chromosome and position
+    ## variant weight will be matched using chromosome and position
 
     ## 1 alleles from Jun are being flipped to align them with the reference SNP
 
-    ## variant weight will match using chromosome and position
+    ## variant weight will be matched using chromosome and position
 
-    ##  All the allele from Bellenguez are match with the reference SNP
+    ##  All the allele from Bellenguez are matched with the reference SNP
 
-    ## variant weight will match using chromosome and position
+    ## variant weight will be matched using chromosome and position
 
     ## 8 alleles from Kunkle are being flipped to align them with the reference SNP
 
-    ## variant weight will match using chromosome and position
+    ## variant weight will be matched using chromosome and position
 
-    ##  All the allele from Kunkle_AFR are match with the reference SNP
+    ##  All the allele from Kunkle_AFR are matched with the reference SNP
 
     head(ad_variants_weight_clean)
 
@@ -317,8 +317,7 @@ variant weight. follow this command below:
 
 ### Step 3: Construct PRS
 
-If you used our final scaling, please in PRSice2 command added *–score
-sum*. See command below:
+Below is PRSice2 command to construct PRSsum
 
     Rscript ./PRSice.R \
      --dir ./PRS_Output \
